@@ -1,0 +1,16 @@
+<h1>Recipes:</h1>
+<h4>Search by Ingredient:</h4>
+<%= form_with(url: "/recipes", method: "get", local: true) do |f|%>
+ <%= f.select :order, ['most ingredients', 'least ingredients']%>
+  <%= f.submit("Search") %>
+  
+<% end %>
+    <ul>
+        <% @recipes.each do |recipe| %>
+            <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+        <% end%>
+    </ul> 
+
+
+  
+
