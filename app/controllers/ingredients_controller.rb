@@ -1,6 +1,12 @@
 class IngredientsController < ApplicationController
     def index
-        UserAllergicTo.group(:ingredient_id).order(ingredient_id: :desc)
+        # Stat.where(:skin_id => skin_id).joins(:item).order("items.rating DESC")
+        Ingredient.where(:name => name).joins(:user_allergic_to).order("user_allergic_to.ingredient_id DESC")
+        # ua = UserAllergicTo.most_allergic
+
+        # ua.map do |ua|
+        #     Ingredient.find(ua.ingredient_id).name
+        # end 
         # @users = User.order(allergic_to: :desc)
         # ingredients_array = @users.map do |user|
         #     user.allergic_to
